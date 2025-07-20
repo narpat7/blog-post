@@ -1,0 +1,9 @@
+ body{
+    background-color: #FFE8CD;
+}
+
+@import "tailwindcss";  
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
