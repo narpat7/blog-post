@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
-// 1. Schema define
 const OwnerSchema = new mongoose.Schema({
   name: { type: String, required: true },
   phone: { type: String, required: true, unique: true,  },
@@ -17,17 +16,17 @@ const OwnerSchema = new mongoose.Schema({
         "Password must be at least 10 characters long and include uppercase, lowercase, number, and special character.",
     },
   },
-   resetOtp: {
-    type: String,
-    default: null,
-  },
-  otpExpiry: {
-    type: Date,
-    default: null,
-  },
+  //  resetOtp: {
+  //   type: String,
+  //   default: null,
+  // },
+  // otpExpiry: {
+  //   type: Date,
+  //   default: null,
+  // },
 });
 
-// 2. Password hash hook
+// // 2. Password hash hook
 OwnerSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   const salt = await bcrypt.genSalt(10);

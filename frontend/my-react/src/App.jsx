@@ -12,7 +12,6 @@ import Profile from './components/profile.jsx';
 import Login from './pages/login.jsx';
 import AboutUs from './pages/aboutUs.jsx';
 import FAQ from './pages/FAQ.jsx';
-import ForgotPassword from './pages/forgotPassword.jsx';
 
 const router = createBrowserRouter([
   {path:"/",element:<MainNavigation/>,children:[
@@ -48,7 +47,6 @@ const router = createBrowserRouter([
 },
 
     {path:"/login",element:<Login/>},
-    {path:"/forgot-password",element:<ForgotPassword/>}
   ]},
 ]);
 

@@ -115,8 +115,8 @@ export default function Profile() {
           <button onClick={() => navigate("/add")} className="px-4 py-1 border rounded-full text-sm transition bg-white text-blue-600 hover:bg-blue-600 hover:text-white border-blue-600">
             Add Article
           </button>
-          <button onClick={()=>navigate("/forgot-password")} className="px-4 py-1 border rounded-full text-sm transition bg-white text-blue-600 hover:bg-blue-600 hover:text-white border-blue-600">
-            ChangePassword
+          <button className="px-4 py-1 border rounded-full text-sm transition bg-white text-blue-600 hover:bg-blue-600 hover:text-white border-blue-600">
+            Button 2
           </button>
           <button className="px-4 py-1 border rounded-full text-sm transition bg-white text-blue-600 hover:bg-blue-600 hover:text-white border-blue-600">
             Button 3

@@ -48,9 +48,9 @@ connectDB();
 
 //     const newOwner = new Owner({
 //       name: "Narpat Choudhary",
-//       phone: "9216519195",
-//       email: "officialnarpatchoudhary0001@gmail.com",
-//       password: "Narpat@#7297fit"
+//       phone: "",
+//       email: "",
+//       password: ""
 //     });
 
 //     await newOwner.save();

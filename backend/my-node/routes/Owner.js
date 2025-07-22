@@ -12,9 +12,6 @@ import {
   getAllHomeImages, 
   deleteHomeImage,
   getHomeImage,
-  // sendOtpForPasswordReset,
-  // resetPasswordWithOtp,
-  // forgotPassword
 } from '../controllers/Owner.js';
 import { authMiddleware } from "../middleware/authMiddleware.js";
 
@@ -32,8 +29,5 @@ router.get('/profile/latest-image',authMiddleware , getLatestProfileImage);
 router.get('/home/images', getAllHomeImages);
 router.delete('/home/image/:id',authMiddleware , deleteHomeImage);
 router.get('/home-image/:id', getHomeImage);
-// router.post("/password/send-otp", sendOtpForPasswordReset);
-// router.post("/password/reset", forgotPassword);
-// router.post("/password/reset", resetPasswordWithOtp);
 
 export default router;
