@@ -52,8 +52,8 @@ export default function ShowArticles() {
       </p>
 
       {/* Category Filter Buttons */}
-      {/* <div className="flex gap-4 flex-wrap mb-8">
-        {["fat loss","muscle gain", "yoga"].map((cat) => (
+      <div className="flex gap-4 flex-wrap mb-8">
+        {["fat loss ","muscle gain", "yoga"].map((cat) => (
           <button
             key={cat}
             onClick={() => toggleCategory(cat)}
@@ -66,7 +66,7 @@ export default function ShowArticles() {
             {cat}
           </button>
         ))}
-      </div> */}
+      </div>
 
       {loading ? (
         <p className="text-center text-gray-500 text-lg">⏳ Loading articles...</p>

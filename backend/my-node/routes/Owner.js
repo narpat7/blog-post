@@ -12,6 +12,7 @@ import {
   getAllHomeImages, 
   deleteHomeImage,
   getHomeImage,
+  verifyToken,
 } from '../controllers/Owner.js';
 import { authMiddleware } from "../middleware/authMiddleware.js";
 
@@ -29,5 +30,7 @@ router.get('/profile/latest-image',authMiddleware , getLatestProfileImage);
 router.get('/home/images', getAllHomeImages);
 router.delete('/home/image/:id',authMiddleware , deleteHomeImage);
 router.get('/home-image/:id', getHomeImage);
+router.get('/verify-token', authMiddleware, verifyToken);
+
 
 export default router;

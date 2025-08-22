@@ -35,7 +35,7 @@ body: JSON.stringify({ emailOrPhone, password }),
       localStorage.setItem("authenticated", "true");
       localStorage.setItem("token", data.token);  // ✅ add this
       alert("Login successful!");
-      navigate("/owner/health/fitness/with/choudhary/fitness/profile/user");
+      window.location.href = "/owner/health/fitness/with/choudhary/fitness/profile/user";
     } else {
       alert(data.message || "Login failed");
     }

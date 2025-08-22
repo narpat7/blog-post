@@ -9,9 +9,40 @@ export default function Home() {
   const [loadingImages, setLoadingImages] = useState(true);
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
-  const isAuthenticated = localStorage.getItem("authenticated") === "true";
+  // const isAuthenticated = localStorage.getItem("authenticated") === "true";
+  const [isAuthenticated, setIsAuthenticated] = useState(false);  
   const token = localStorage.getItem("token");
   const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    const checkAuthFromServer = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          setIsAuthenticated(false);
+          return;
+        }
+  
+        const res = await fetch("http://localhost:3000/api/owner/verify-token", {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+  
+        if (res.ok) {
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
+      } catch (err) {
+        setIsAuthenticated(false);
+      }
+    };
+  
+    checkAuthFromServer();
+  }, []);
+  
 
 
   // Auto change image every 10s

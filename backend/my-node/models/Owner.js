@@ -8,22 +8,8 @@ const OwnerSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    validate: {
-      validator: function (value) {
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{10,}$/.test(value);
-      },
-      message:
-        "Password must be at least 10 characters long and include uppercase, lowercase, number, and special character.",
-    },
+    minlength: 6,
   },
-  //  resetOtp: {
-  //   type: String,
-  //   default: null,
-  // },
-  // otpExpiry: {
-  //   type: Date,
-  //   default: null,
-  // },
 });
 
 // // 2. Password hash hook

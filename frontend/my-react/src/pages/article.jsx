@@ -12,9 +12,39 @@
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollRef = useRef(null);
     const navigate = useNavigate();
-    const isAuthenticated = localStorage.getItem("authenticated") === "true";    
+    // const isAuthenticated = localStorage.getItem("authenticated") === "true";   
+    const [isAuthenticated, setIsAuthenticated] = useState(false);   
     const [likes, setLikes] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
+
+      useEffect(() => {
+        const checkAuthFromServer = async () => {
+          try {
+            const token = localStorage.getItem("token");
+            if (!token) {
+              setIsAuthenticated(false);
+              return;
+            }
+      
+            const res = await fetch("http://localhost:3000/api/owner/verify-token", {
+              method: "GET",
+              headers: {
+                "Authorization": `Bearer ${token}`,
+              },
+            });
+      
+            if (res.ok) {
+              setIsAuthenticated(true);
+            } else {
+              setIsAuthenticated(false);
+            }
+          } catch (err) {
+            setIsAuthenticated(false);
+          }
+        };
+      
+        checkAuthFromServer();
+      }, []);
 
     useEffect(() => {
   if (article) {

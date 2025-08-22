@@ -76,7 +76,7 @@ export default function Profile() {
     if (window.confirm("Are you sure you want to logout?")) {
       localStorage.removeItem("token");
       alert("✅ Logged out successfully!");
-      navigate("/login");
+      window.location.href = "/login";
     }
   };
 

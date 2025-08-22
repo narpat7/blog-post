@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png"; // Adjust the path as necessary
@@ -6,7 +6,38 @@ import logo from "../assets/logo.png"; // Adjust the path as necessary
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navigator = useNavigate();
-  const isAuthenticated = localStorage.getItem("authenticated") === "true";    
+  // const isAuthenticated = localStorage.getItem("authenticated") === "true";  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);  
+
+  useEffect(() => {
+  const checkAuthFromServer = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setIsAuthenticated(false);
+        return;
+      }
+
+      const res = await fetch("http://localhost:3000/api/owner/verify-token", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+
+      if (res.ok) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+    } catch (err) {
+      setIsAuthenticated(false);
+    }
+  };
+
+  checkAuthFromServer();
+}, []);
+
 
    const handleHomeClick = () => {
     if (location.pathname === "/") {
